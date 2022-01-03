@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.6.8'
+        springBootVersion = '2.6.9'
     }
     repositories {
         mavenCentral()
