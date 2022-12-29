@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '2.9.9'
+        springBootVersion = '3.0.0'
     }
     repositories {
         mavenCentral()
@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.hendisantika'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
