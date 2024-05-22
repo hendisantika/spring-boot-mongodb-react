@@ -2,11 +2,13 @@ package com.hendisantika.springbootmongodbreact.controller;
 
 import com.hendisantika.springbootmongodbreact.model.Contact;
 import com.hendisantika.springbootmongodbreact.repository.ContactRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -22,29 +24,29 @@ import java.util.Optional;
  * To change this template use File | Settings | File Templates.
  */
 @RestController
+@RequiredArgsConstructor
 public class ContactController {
 
-    @Autowired
-    ContactRepository contactRepository;
+    private final ContactRepository contactRepository;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/contacts")
+    @GetMapping(value = "/contacts")
     public Iterable<Contact> contact() {
         return contactRepository.findAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/contacts")
+    @PostMapping(value = "/contacts")
     public Contact save(@RequestBody Contact contact) {
         contactRepository.save(contact);
 
         return contact;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/contacts/{id}")
+    @GetMapping(value = "/contacts/{id}")
     public Optional<Contact> show(@PathVariable String id) {
         return contactRepository.findById(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/contacts/{id}")
+    @PutMapping(value = "/contacts/{id}")
     public Contact update(@PathVariable String id, @RequestBody Contact contact) {
         Optional<Contact> optcontact = contactRepository.findById(id);
         Contact c = optcontact.get();
@@ -62,7 +64,7 @@ public class ContactController {
         return c;
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/contacts/{id}")
+    @DeleteMapping(value = "/contacts/{id}")
     public String delete(@PathVariable String id) {
         Optional<Contact> optcontact = contactRepository.findById(id);
         Contact contact = optcontact.get();
