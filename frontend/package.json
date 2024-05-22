@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^1.6.0",
+    "npm-check-updates": "^16.14.20",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^4.2.2",
